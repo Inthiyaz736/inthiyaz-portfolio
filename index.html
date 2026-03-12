@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Shaik Mahammad Inthiyaz | BI Analyst</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Poppins;
+scroll-behavior:smooth;
+}
+
+body{
+background:#0f172a;
+color:white;
+overflow-x:hidden;
+}
+
+canvas{
+position:fixed;
+top:0;
+left:0;
+z-index:-1;
+}
+
+/* header */
+
+header{
+display:flex;
+justify-content:space-between;
+padding:20px 8%;
+background:#020617;
+position:fixed;
+width:100%;
+z-index:100;
+}
+
+header h2{
+color:#38bdf8;
+}
+
+nav a{
+margin-left:20px;
+text-decoration:none;
+color:white;
+}
+
+/* hero */
+
+.hero{
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+}
+
+.hero h1{
+font-size:50px;
+}
+
+.hero p{
+margin-top:10px;
+opacity:0.8;
+}
+
+.btn{
+margin-top:20px;
+padding:12px 25px;
+background:#38bdf8;
+border:none;
+border-radius:6px;
+cursor:pointer;
+}
+
+/* section */
+
+section{
+padding:90px 10%;
+}
+
+.title{
+text-align:center;
+margin-bottom:40px;
+font-size:32px;
+}
+
+/* KPI */
+
+.kpi-container{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:30px;
+}
+
+.kpi{
+background:#020617;
+padding:40px;
+text-align:center;
+border-radius:12px;
+transition:0.4s;
+opacity:0;
+transform:translateY(40px);
+}
+
+.kpi.active{
+opacity:1;
+transform:translateY(0);
+}
+
+.kpi:hover{
+transform:translateY(-10px) scale(1.05);
+box-shadow:0 0 25px rgba(56,189,248,0.6);
+}
+
+.kpi h2{
+font-size:45px;
+color:#38bdf8;
+}
+
+/* projects */
+
+.projects{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
+}
+
+.project{
+background:#020617;
+padding:20px;
+border-radius:10px;
+text-align:center;
+transition:0.4s;
+}
+
+.project:hover{
+transform:translateY(-10px);
+}
+
+.project img{
+width:80px;
+margin-bottom:10px;
+}
+
+/* DASHBOARD SLIDER */
+
+.slider-container{
+position:relative;
+max-width:900px;
+margin:auto;
+overflow:hidden;
+}
+
+.slider{
+display:flex;
+transition:transform 0.6s ease;
+}
+
+.slide{
+min-width:100%;
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+.slide img{
+width:100%;
+border-radius:10px;
+box-shadow:0 10px 30px rgba(0,0,0,0.6);
+}
+
+.prev,.next{
+position:absolute;
+top:50%;
+transform:translateY(-50%);
+background:#38bdf8;
+border:none;
+padding:10px 15px;
+cursor:pointer;
+font-size:18px;
+border-radius:6px;
+}
+
+.prev{left:10px}
+.next{right:10px}
+
+.dots{
+text-align:center;
+margin-top:15px;
+}
+
+.dot{
+height:12px;
+width:12px;
+margin:5px;
+background:#bbb;
+border-radius:50%;
+display:inline-block;
+cursor:pointer;
+}
+
+.dot.active{
+background:#38bdf8;
+}
+
+/* CTA */
+
+.cta{
+text-align:center;
+background:#020617;
+padding:60px;
+border-radius:10px;
+}
+
+/* contact */
+
+.contact input,
+.contact textarea{
+width:100%;
+padding:10px;
+margin:10px 0;
+border:none;
+border-radius:6px;
+}
+
+/* footer */
+
+footer{
+text-align:center;
+padding:30px;
+background:#020617;
+margin-top:50px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<canvas id="bg"></canvas>
+
+<header>
+
+<h2>Shaik Mahammad Inthiyaz</h2>
+
+<nav>
+
+<a href="#">Home</a>
+<a href="#experience">Experience</a>
+<a href="#projects">Projects</a>
+<a href="#dashboards">Dashboards</a>
+<a href="#contact">Contact</a>
+
+</nav>
+
+</header>
+
+
+<div class="hero">
+
+<h1>Shaik Mahammad Inthiyaz</h1>
+
+<p>Business Intelligence Analyst | Tableau | SQL | Data Visualization</p>
+
+<button class="btn" onclick="downloadResume()">Download Resume</button>
+
+</div>
+
+
+<section id="experience">
+
+<h2 class="title">Professional Highlights</h2>
+
+<div class="kpi-container">
+
+<div class="kpi">
+<h2 class="counter" data-target="4">0</h2>
+<p>Years Experience</p>
+</div>
+
+<div class="kpi">
+<h2 class="counter" data-target="100">0</h2>
+<p>Dashboards Built</p>
+</div>
+
+<div class="kpi">
+<h2 class="counter" data-target="5">0</h2>
+<p>Enterprise Clients</p>
+</div>
+
+<div class="kpi">
+<h2 class="counter" data-target="6">0</h2>
+<p>Technologies</p>
+</div>
+
+</div>
+
+</section>
+
+
+<section id="projects">
+
+<h2 class="title">Enterprise Projects</h2>
+
+<div class="projects">
+
+<div class="project">
+<img src="AL.png">
+<h3>Ashok Leyland</h3>
+<p>Dealer-level service revenue analytics dashboards.</p>
+</div>
+
+<div class="project">
+<img src="Air India.png">
+<h3>Air India</h3>
+<p>Global sales KPI monitoring dashboards.</p>
+</div>
+
+<div class="project">
+<img src="Tata Communications.png">
+<h3>Tata Communications</h3>
+<p>Executive KPI insights for strategic decisions.</p>
+</div>
+
+</div>
+
+</section>
+
+
+<section id="dashboards">
+
+<h2 class="title">Dashboard Gallery</h2>
+
+<div class="slider-container">
+
+<div class="slider">
+
+<div class="slide">
+<img src="Screenshot 2026-03-12 152419.png">
+</div>
+
+<div class="slide">
+<img src="Screenshot 2026-03-12 152445.png">
+</div>
+
+<div class="slide">
+<img src="CEO Dashboard.png">
+</div>
+
+</div>
+
+<button class="prev">&#10094;</button>
+<button class="next">&#10095;</button>
+
+<div class="dots">
+<span class="dot active"></span>
+<span class="dot"></span>
+<span class="dot"></span>
+</div>
+
+</div>
+
+</section>
+
+
+<section class="cta">
+
+<h2>Looking for a Data Analyst?</h2>
+
+<p>I build enterprise Tableau dashboards and analytics solutions.</p>
+
+<button class="btn" onclick="downloadResume()">Hire Me</button>
+
+</section>
+
+
+<section id="contact">
+
+<h2 class="title">Recruiter Contact</h2>
+
+<form class="contact">
+
+<input type="text" placeholder="Name">
+<input type="email" placeholder="Email">
+<textarea rows="5" placeholder="Message"></textarea>
+
+<button class="btn">Send Message</button>
+
+</form>
+
+</section>
+
+
+<footer>
+
+<p>© 2026 Shaik Mahammad Inthiyaz</p>
+
+</footer>
+
+
+<script>
+
+/* resume download */
+
+function downloadResume(){
+
+const link=document.createElement("a")
+link.href="inthiyaz_resume.pdf"
+link.download="Shaik_Mahammad_Inthiyaz_Resume.pdf"
+document.body.appendChild(link)
+link.click()
+document.body.removeChild(link)
+
+}
+
+/* KPI counter */
+
+const counters=document.querySelectorAll('.counter')
+
+counters.forEach(counter=>{
+
+const update=()=>{
+
+const target=+counter.getAttribute('data-target')
+const c=+counter.innerText
+const increment=target/200
+
+if(c<target){
+
+counter.innerText=Math.ceil(c+increment)
+setTimeout(update,10)
+
+}else{
+
+counter.innerText=target
+
+}
+
+}
+
+update()
+
+})
+
+
+/* highlight animation */
+
+function animateHighlights(){
+
+const cards=document.querySelectorAll(".kpi")
+
+cards.forEach((card,i)=>{
+
+setTimeout(()=>{
+
+card.classList.add("active")
+
+},i*200)
+
+})
+
+}
+
+window.addEventListener("scroll",()=>{
+
+const section=document.querySelector("#experience")
+
+const pos=section.getBoundingClientRect().top
+
+if(pos<window.innerHeight){
+
+animateHighlights()
+
+}
+
+})
+
+
+/* slider */
+
+let index = 0
+
+const slides = document.querySelectorAll(".slide")
+const dots = document.querySelectorAll(".dot")
+const slider = document.querySelector(".slider")
+
+function showSlide(i){
+
+if(i >= slides.length) index = 0
+else if(i < 0) index = slides.length - 1
+else index = i
+
+slider.style.transform = "translateX(" + (-index * 100) + "%)"
+
+dots.forEach(d => d.classList.remove("active"))
+dots[index].classList.add("active")
+
+}
+
+document.querySelector(".next").onclick = () => showSlide(index+1)
+document.querySelector(".prev").onclick = () => showSlide(index-1)
+
+dots.forEach((dot,i)=>{
+dot.onclick = () => showSlide(i)
+})
+
+setInterval(()=>{
+showSlide(index+1)
+},4000)
+
+/* AI background */
+
+const canvas=document.getElementById("bg")
+const ctx=canvas.getContext("2d")
+
+canvas.width=window.innerWidth
+canvas.height=window.innerHeight
+
+let particles=[]
+
+for(let i=0;i<100;i++){
+
+particles.push({
+x:Math.random()*canvas.width,
+y:Math.random()*canvas.height,
+vx:(Math.random()-0.5),
+vy:(Math.random()-0.5)
+})
+
+}
+
+function animate(){
+
+ctx.clearRect(0,0,canvas.width,canvas.height)
+
+particles.forEach(p=>{
+
+p.x+=p.vx
+p.y+=p.vy
+
+ctx.beginPath()
+ctx.arc(p.x,p.y,2,0,Math.PI*2)
+ctx.fillStyle="#38bdf8"
+ctx.fill()
+
+})
+
+requestAnimationFrame(animate)
+
+}
+
+animate()
+
+</script>
+
+</body>
+</html>
