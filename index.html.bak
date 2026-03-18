@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -21,7 +20,7 @@ scroll-behavior:smooth;
 }
 
 body{
-background:#0f172a;
+background:linear-gradient(135deg,#020617,#0f172a);
 color:white;
 overflow-x:hidden;
 }
@@ -39,7 +38,8 @@ header{
 display:flex;
 justify-content:space-between;
 padding:20px 8%;
-background:#020617;
+background:rgba(2,6,23,0.7);
+backdrop-filter:blur(10px);
 position:fixed;
 width:100%;
 z-index:100;
@@ -53,6 +53,11 @@ nav a{
 margin-left:20px;
 text-decoration:none;
 color:white;
+transition:0.3s;
+}
+
+nav a:hover{
+color:#38bdf8;
 }
 
 /* hero */
@@ -80,14 +85,20 @@ margin-top:20px;
 padding:12px 25px;
 background:#38bdf8;
 border:none;
-border-radius:6px;
+border-radius:8px;
 cursor:pointer;
+transition:0.3s;
 }
 
-/* sections */
+.btn:hover{
+transform:scale(1.1);
+box-shadow:0 0 15px #38bdf8;
+}
+
+/* section */
 
 section{
-padding:100px 10%;
+padding:90px 10%;
 }
 
 .title{
@@ -105,7 +116,7 @@ gap:30px;
 }
 
 .kpi{
-background:#020617;
+background:rgba(2,6,23,0.8);
 padding:40px;
 text-align:center;
 border-radius:12px;
@@ -129,31 +140,6 @@ font-size:45px;
 color:#38bdf8;
 }
 
-/* projects */
-
-.projects{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:25px;
-}
-
-.project{
-background:#020617;
-padding:20px;
-border-radius:10px;
-text-align:center;
-transition:0.4s;
-}
-
-.project:hover{
-transform:translateY(-10px);
-}
-
-.project img{
-width:80px;
-margin-bottom:10px;
-}
-
 /* timeline */
 
 .timeline{
@@ -170,53 +156,89 @@ background:#38bdf8;
 top:0;
 bottom:0;
 left:50%;
+margin-left:-2px;
 }
 
 .timeline-item{
 padding:20px 40px;
 position:relative;
 width:50%;
-opacity:0;
-transform:translateY(40px);
-transition:0.6s;
 }
 
-.timeline-item.active{
-opacity:1;
-transform:translateY(0);
-}
-
-.timeline-item:nth-child(odd){
-left:0;
-}
-
-.timeline-item:nth-child(even){
-left:50%;
-}
+.timeline-item:nth-child(odd){ left:0; }
+.timeline-item:nth-child(even){ left:50%; }
 
 .timeline-content{
-background:#020617;
+background:rgba(2,6,23,0.8);
 padding:20px;
 border-radius:10px;
+box-shadow:0 0 15px rgba(56,189,248,0.3);
+transition:0.3s;
+}
+
+.timeline-content:hover{
+transform:scale(1.05);
 }
 
 .timeline-content h3{
 color:#38bdf8;
 }
 
-.timeline-item::after{
-content:'';
-position:absolute;
-width:20px;
-height:20px;
-background:#38bdf8;
-border-radius:50%;
-top:25px;
-right:-10px;
+.timeline-content span{
+font-size:12px;
+opacity:0.7;
 }
 
-.timeline-item:nth-child(even)::after{
-left:-10px;
+/* projects */
+
+.projects{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:25px;
+}
+
+.project{
+position:relative;
+border-radius:12px;
+overflow:hidden;
+cursor:pointer;
+}
+
+.project img{
+width:100%;
+height:200px;
+object-fit:cover;
+transition:0.4s;
+}
+
+.project-overlay{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(2,6,23,0.9);
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:20px;
+opacity:0;
+transition:0.4s;
+backdrop-filter:blur(10px);
+}
+
+.project-overlay h3{
+color:#38bdf8;
+}
+
+.project:hover img{
+transform:scale(1.1);
+}
+
+.project:hover .project-overlay{
+opacity:1;
 }
 
 /* slider */
@@ -250,17 +272,46 @@ background:#38bdf8;
 border:none;
 padding:10px;
 cursor:pointer;
+border-radius:6px;
 }
 
 .prev{left:10px}
 .next{right:10px}
+
+.dots{
+text-align:center;
+margin-top:10px;
+}
+
+.dot{
+height:12px;
+width:12px;
+margin:5px;
+background:#bbb;
+border-radius:50%;
+display:inline-block;
+cursor:pointer;
+}
+
+.dot.active{
+background:#38bdf8;
+}
+
+/* CTA */
+
+.cta{
+text-align:center;
+background:rgba(2,6,23,0.8);
+padding:60px;
+border-radius:10px;
+}
 
 /* contact */
 
 .contact input,
 .contact textarea{
 width:100%;
-padding:10px;
+padding:12px;
 margin:10px 0;
 border:none;
 border-radius:6px;
@@ -275,8 +326,15 @@ background:#020617;
 margin-top:50px;
 }
 
-</style>
+/* mobile */
 
+@media(max-width:768px){
+.timeline::after{ left:20px; }
+.timeline-item{ width:100%; padding-left:60px; }
+.timeline-item:nth-child(even){ left:0; }
+}
+
+</style>
 </head>
 
 <body>
@@ -284,270 +342,228 @@ margin-top:50px;
 <canvas id="bg"></canvas>
 
 <header>
-
 <h2>Inthiyaz</h2>
-
 <nav>
-
 <a href="#">Home</a>
 <a href="#experience">Highlights</a>
-<a href="#career">Career</a>
+<a href="#timeline">Experience</a>
 <a href="#projects">Projects</a>
 <a href="#dashboards">Dashboards</a>
 <a href="#contact">Contact</a>
-
 </nav>
-
 </header>
 
 <div class="hero">
-
 <h1>Shaik Mahammad Inthiyaz</h1>
-<p>Business Intelligence Analyst | Tableau | SQL | Data Visualization</p>
-
+<p>BI Analyst | Tableau | SQL | Data Visualization</p>
 <button class="btn" onclick="downloadResume()">Download Resume</button>
-
 </div>
 
 <section id="experience">
-
 <h2 class="title">Professional Highlights</h2>
 
 <div class="kpi-container">
-
 <div class="kpi"><h2 class="counter" data-target="4">0</h2><p>Years Experience</p></div>
-<div class="kpi"><h2 class="counter" data-target="25">0</h2><p>Dashboards Built</p></div>
-<div class="kpi"><h2 class="counter" data-target="4">0</h2><p>Enterprise Clients</p></div>
-<div class="kpi"><h2 class="counter" data-target="10">0</h2><p>Technologies</p></div>
-
+<div class="kpi"><h2 class="counter" data-target="100">0</h2><p>Dashboards Built</p></div>
+<div class="kpi"><h2 class="counter" data-target="5">0</h2><p>Enterprise Clients</p></div>
+<div class="kpi"><h2 class="counter" data-target="6">0</h2><p>Technologies</p></div>
 </div>
-
 </section>
 
-<section id="career">
+<!-- TIMELINE -->
 
-<h2 class="title">Career Journey</h2>
+<section id="timeline">
+<h2 class="title">My Tableau Experience Journey</h2>
 
 <div class="timeline">
 
 <div class="timeline-item">
 <div class="timeline-content">
-<h3>Ashok Leyland</h3>
-<p>Developed dealer analytics dashboards using Tableau and SAP HANA.</p>
+<h3>Ashok Leyland – Service Analytics</h3>
+<span>Feb 2026 – Present</span>
+<p>Dealer dashboards, service KPIs, parts analytics & real-time insights.</p>
 </div>
 </div>
 
 <div class="timeline-item">
 <div class="timeline-content">
-<h3>Tata Communications</h3>
-<p>Configured Tableau Server, automated reports and optimized data models.</p>
+<h3>Tata Communications – BI</h3>
+<span>Aug 2025 – Jan 2026</span>
+<p>Executive dashboards, KPI tracking & strategic insights.</p>
 </div>
 </div>
 
 <div class="timeline-item">
 <div class="timeline-content">
-<h3>Air India</h3>
-<p>Built global sales KPI dashboards and improved analytics strategy.</p>
+<h3>Air India – Loyalty</h3>
+<span>Jan 2025 – Jul 2025</span>
+<p>CXO dashboards, revenue tracking & SQL analytics.</p>
 </div>
 </div>
 
 <div class="timeline-item">
 <div class="timeline-content">
-<h3>Tata Electronics</h3>
-<p>Developed manufacturing quality dashboards using SQL and Tableau.</p>
+<h3>TATA TEPL</h3>
+<span>May 2024 – Dec 2025</span>
+<p>Manufacturing dashboards, downtime & quality analytics.</p>
+</div>
+</div>
+
+<div class="timeline-item">
+<div class="timeline-content">
+<h3>Kisah Apparels</h3>
+<span>Jun 2023 – Feb 2024</span>
+<p>E-commerce dashboards, returns & sales insights.</p>
 </div>
 </div>
 
 </div>
-
 </section>
 
 <section id="projects">
-
 <h2 class="title">Enterprise Projects</h2>
 
 <div class="projects">
 
 <div class="project">
 <img src="AL.png">
+<div class="project-overlay">
 <h3>Ashok Leyland</h3>
+<p>Service dashboards, revenue tracking & KPI insights.</p>
+</div>
 </div>
 
 <div class="project">
 <img src="Air India.png">
+<div class="project-overlay">
 <h3>Air India</h3>
+<p>CXO dashboards, loyalty analytics & SQL modeling.</p>
+</div>
 </div>
 
 <div class="project">
 <img src="Tata Communications.png">
+<div class="project-overlay">
 <h3>Tata Communications</h3>
+<p>Executive dashboards & KPI insights.</p>
+</div>
 </div>
 
 </div>
-
 </section>
 
 <section id="dashboards">
-
 <h2 class="title">Dashboard Gallery</h2>
 
 <div class="slider-container">
-
 <div class="slider">
-
 <div class="slide"><img src="Screenshot 2026-03-12 152419.png"></div>
 <div class="slide"><img src="Screenshot 2026-03-12 152445.png"></div>
 <div class="slide"><img src="CEO Dashboard.png"></div>
-
 </div>
 
 <button class="prev">&#10094;</button>
 <button class="next">&#10095;</button>
 
+<div class="dots">
+<span class="dot active"></span>
+<span class="dot"></span>
+<span class="dot"></span>
 </div>
+</div>
+</section>
 
+<section class="cta">
+<h2>Looking for a Tableau Developer?</h2>
+<p>I build enterprise dashboards and analytics solutions.</p>
+<button class="btn" onclick="downloadResume()">Hire Me</button>
 </section>
 
 <section id="contact">
-
 <h2 class="title">Recruiter Contact</h2>
-
 <form class="contact">
-
 <input type="text" placeholder="Name">
 <input type="email" placeholder="Email">
 <textarea rows="5" placeholder="Message"></textarea>
-
-<button class="btn">Send</button>
-
+<button class="btn">Send Message</button>
 </form>
-
 </section>
 
 <footer>
-
 <p>© 2026 Shaik Mahammad Inthiyaz</p>
-
 </footer>
 
 <script>
 
-/* resume download */
-
 function downloadResume(){
-
-const link=document.createElement("a")
-link.href="inthiyaz_resume.pdf"
-link.download="Shaik_Mahammad_Inthiyaz_Resume.pdf"
-link.click()
-
+window.open("inthiyaz_resume.pdf","_blank")
 }
 
-/* KPI counter */
-
-const counters=document.querySelectorAll('.counter')
-
-counters.forEach(counter=>{
-
-const update=()=>{
-
-const target=+counter.dataset.target
-const c=+counter.innerText
-const inc=target/200
-
-if(c<target){
-counter.innerText=Math.ceil(c+inc)
+/* counter */
+document.querySelectorAll('.counter').forEach(c=>{
+let update=()=>{
+let t=+c.dataset.target
+let v=+c.innerText
+let inc=t/200
+if(v<t){
+c.innerText=Math.ceil(v+inc)
 setTimeout(update,10)
+}else c.innerText=t
 }
-
-}
-
 update()
-
 })
 
-/* timeline animation */
-
-const items=document.querySelectorAll(".timeline-item")
-
+/* animation */
 window.addEventListener("scroll",()=>{
-
-items.forEach(item=>{
-
-if(item.getBoundingClientRect().top < window.innerHeight-100){
-
-item.classList.add("active")
-
+document.querySelectorAll(".kpi").forEach(el=>{
+if(el.getBoundingClientRect().top<window.innerHeight){
+el.classList.add("active")
 }
-
 })
-
 })
 
 /* slider */
-
-let index=0
-
-const slider=document.querySelector(".slider")
+let i=0
 const slides=document.querySelectorAll(".slide")
+const dots=document.querySelectorAll(".dot")
+const slider=document.querySelector(".slider")
 
-function showSlide(i){
-
-if(i>=slides.length)index=0
-else if(i<0)index=slides.length-1
-else index=i
-
-slider.style.transform="translateX("+(-index*100)+"%)"
-
+function show(n){
+i=(n+slides.length)%slides.length
+slider.style.transform=`translateX(-${i*100}%)`
+dots.forEach(d=>d.classList.remove("active"))
+dots[i].classList.add("active")
 }
 
-document.querySelector(".next").onclick=()=>showSlide(index+1)
-document.querySelector(".prev").onclick=()=>showSlide(index-1)
+document.querySelector(".next").onclick=()=>show(i+1)
+document.querySelector(".prev").onclick=()=>show(i-1)
+dots.forEach((d,idx)=>d.onclick=()=>show(idx))
+setInterval(()=>show(i+1),4000)
 
-setInterval(()=>showSlide(index+1),4000)
-
-/* background animation */
-
+/* particles */
 const canvas=document.getElementById("bg")
 const ctx=canvas.getContext("2d")
+canvas.width=innerWidth
+canvas.height=innerHeight
 
-canvas.width=window.innerWidth
-canvas.height=window.innerHeight
-
-let particles=[]
-
-for(let i=0;i<100;i++){
-
-particles.push({
-x:Math.random()*canvas.width,
-y:Math.random()*canvas.height,
-vx:(Math.random()-0.5),
-vy:(Math.random()-0.5)
-})
-
+let p=[]
+for(let j=0;j<80;j++){
+p.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,vx:Math.random()-0.5,vy:Math.random()-0.5})
 }
 
-function animate(){
-
+function draw(){
 ctx.clearRect(0,0,canvas.width,canvas.height)
-
-particles.forEach(p=>{
-
-p.x+=p.vx
-p.y+=p.vy
-
+p.forEach(a=>{
+a.x+=a.vx
+a.y+=a.vy
 ctx.beginPath()
-ctx.arc(p.x,p.y,2,0,Math.PI*2)
+ctx.arc(a.x,a.y,2,0,Math.PI*2)
 ctx.fillStyle="#38bdf8"
 ctx.fill()
-
 })
-
-requestAnimationFrame(animate)
-
+requestAnimationFrame(draw)
 }
-
-animate()
+draw()
 
 </script>
 
