@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 
 <head>
@@ -7,22 +8,52 @@
 
 <title>Shaik Mahammad Inthiyaz | BI Analyst</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
+
+/* ===== GLOBAL ===== */
 
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:Poppins;
+font-family:'Poppins',sans-serif;
 scroll-behavior:smooth;
 }
 
 body{
-background:linear-gradient(135deg,#020617,#0f172a);
+background:#020617;
 color:white;
 overflow-x:hidden;
+}
+
+/* ===== 3D GLOW BACKGROUND ===== */
+
+body::before{
+content:"";
+position:fixed;
+top:-250px;
+left:-250px;
+width:700px;
+height:700px;
+background:radial-gradient(circle,#38bdf8,transparent 70%);
+filter:blur(140px);
+opacity:.6;
+z-index:-2;
+}
+
+body::after{
+content:"";
+position:fixed;
+bottom:-250px;
+right:-250px;
+width:700px;
+height:700px;
+background:radial-gradient(circle,#9333ea,transparent 70%);
+filter:blur(140px);
+opacity:.6;
+z-index:-2;
 }
 
 canvas{
@@ -32,16 +63,19 @@ left:0;
 z-index:-1;
 }
 
-/* header */
+/* ===== NAVBAR ===== */
 
 header{
+position:fixed;
+top:0;
+width:100%;
+padding:20px 8%;
 display:flex;
 justify-content:space-between;
-padding:20px 8%;
-background:rgba(2,6,23,0.7);
-backdrop-filter:blur(10px);
-position:fixed;
-width:100%;
+align-items:center;
+background:rgba(15,23,42,.6);
+backdrop-filter:blur(15px);
+border-bottom:1px solid rgba(255,255,255,.08);
 z-index:100;
 }
 
@@ -50,17 +84,18 @@ color:#38bdf8;
 }
 
 nav a{
-margin-left:20px;
+margin-left:25px;
 text-decoration:none;
-color:white;
-transition:0.3s;
+color:#cbd5f5;
+font-size:14px;
+transition:.3s;
 }
 
 nav a:hover{
 color:#38bdf8;
 }
 
-/* hero */
+/* ===== HERO ===== */
 
 .hero{
 height:100vh;
@@ -69,45 +104,79 @@ flex-direction:column;
 justify-content:center;
 align-items:center;
 text-align:center;
+padding:0 10%;
 }
 
 .hero h1{
-font-size:50px;
+font-size:70px;
+font-weight:700;
+background:linear-gradient(90deg,#38bdf8,#a78bfa);
+-webkit-background-clip:text;
+color:transparent;
 }
 
 .hero p{
-margin-top:10px;
-opacity:0.8;
+margin-top:20px;
+font-size:20px;
+color:#cbd5f5;
+max-width:700px;
 }
 
+/* ===== BUTTON ===== */
+
 .btn{
-margin-top:20px;
-padding:12px 25px;
-background:#38bdf8;
+margin-top:30px;
+padding:14px 34px;
+border-radius:40px;
 border:none;
-border-radius:8px;
 cursor:pointer;
-transition:0.3s;
+
+background:linear-gradient(90deg,#38bdf8,#9333ea);
+color:white;
+font-weight:600;
+
+transition:.3s;
 }
 
 .btn:hover{
-transform:scale(1.1);
-box-shadow:0 0 15px #38bdf8;
+transform:translateY(-4px);
+box-shadow:0 15px 40px rgba(56,189,248,.5);
 }
 
-/* section */
+/* ===== SECTIONS ===== */
 
 section{
-padding:90px 10%;
+padding:120px 10%;
 }
 
 .title{
 text-align:center;
-margin-bottom:40px;
-font-size:32px;
+font-size:42px;
+margin-bottom:60px;
+
+background:linear-gradient(90deg,#38bdf8,#a78bfa);
+-webkit-background-clip:text;
+color:transparent;
 }
 
-/* KPI */
+/* ===== GLASS CARDS ===== */
+
+.card{
+background:rgba(255,255,255,.05);
+backdrop-filter:blur(20px);
+border-radius:18px;
+padding:40px;
+border:1px solid rgba(255,255,255,.08);
+
+transition:.4s;
+}
+
+.card:hover{
+transform:translateY(-10px);
+box-shadow:0 25px 50px rgba(56,189,248,.25);
+}
+
+/* ===== KPI ===== */
 
 .kpi-container{
 display:grid;
@@ -115,144 +184,48 @@ grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
 gap:30px;
 }
 
-.kpi{
-background:rgba(2,6,23,0.8);
-padding:40px;
-text-align:center;
-border-radius:12px;
-transition:0.4s;
-opacity:0;
-transform:translateY(40px);
-}
-
-.kpi.active{
-opacity:1;
-transform:translateY(0);
-}
-
-.kpi:hover{
-transform:translateY(-10px) scale(1.05);
-box-shadow:0 0 25px rgba(56,189,248,0.6);
-}
-
 .kpi h2{
-font-size:45px;
+font-size:48px;
 color:#38bdf8;
 }
 
-/* timeline */
+/* ===== TIMELINE ===== */
 
 .timeline{
-position:relative;
 max-width:900px;
 margin:auto;
+display:flex;
+flex-direction:column;
+gap:30px;
 }
 
-.timeline::after{
-content:'';
-position:absolute;
-width:4px;
-background:#38bdf8;
-top:0;
-bottom:0;
-left:50%;
-margin-left:-2px;
-}
-
-.timeline-item{
-padding:20px 40px;
-position:relative;
-width:50%;
-}
-
-.timeline-item:nth-child(odd){ left:0; }
-.timeline-item:nth-child(even){ left:50%; }
-
-.timeline-content{
-background:rgba(2,6,23,0.8);
-padding:20px;
-border-radius:10px;
-box-shadow:0 0 15px rgba(56,189,248,0.3);
-transition:0.3s;
-}
-
-.timeline-content:hover{
-transform:scale(1.05);
-}
-
-.timeline-content h3{
-color:#38bdf8;
-}
-
-.timeline-content span{
-font-size:12px;
-opacity:0.7;
-}
-
-/* projects */
+/* ===== PROJECTS ===== */
 
 .projects{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-gap:25px;
-}
-
-.project{
-position:relative;
-border-radius:12px;
-overflow:hidden;
-cursor:pointer;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:30px;
 }
 
 .project img{
 width:100%;
-height:200px;
-object-fit:cover;
-transition:0.4s;
+border-radius:12px;
+margin-bottom:15px;
 }
 
-.project-overlay{
-position:absolute;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:rgba(2,6,23,0.9);
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-text-align:center;
-padding:20px;
-opacity:0;
-transition:0.4s;
-backdrop-filter:blur(10px);
-}
-
-.project-overlay h3{
-color:#38bdf8;
-}
-
-.project:hover img{
-transform:scale(1.1);
-}
-
-.project:hover .project-overlay{
-opacity:1;
-}
-
-/* slider */
+/* ===== DASHBOARD SLIDER ===== */
 
 .slider-container{
-position:relative;
 max-width:900px;
 margin:auto;
 overflow:hidden;
+position:relative;
+border-radius:16px;
 }
 
 .slider{
 display:flex;
-transition:transform 0.6s ease;
+transition:transform .6s ease;
 }
 
 .slide{
@@ -261,8 +234,9 @@ min-width:100%;
 
 .slide img{
 width:100%;
-border-radius:10px;
 }
+
+/* slider buttons */
 
 .prev,.next{
 position:absolute;
@@ -278,63 +252,66 @@ border-radius:6px;
 .prev{left:10px}
 .next{right:10px}
 
-.dots{
-text-align:center;
-margin-top:10px;
-}
-
-.dot{
-height:12px;
-width:12px;
-margin:5px;
-background:#bbb;
-border-radius:50%;
-display:inline-block;
-cursor:pointer;
-}
-
-.dot.active{
-background:#38bdf8;
-}
-
-/* CTA */
+/* ===== CTA ===== */
 
 .cta{
 text-align:center;
-background:rgba(2,6,23,0.8);
-padding:60px;
-border-radius:10px;
+background:rgba(255,255,255,.05);
+padding:80px;
+border-radius:20px;
+border:1px solid rgba(255,255,255,.08);
 }
 
-/* contact */
+/* ===== CONTACT ===== */
 
 .contact input,
 .contact textarea{
 width:100%;
-padding:12px;
+padding:14px;
 margin:10px 0;
 border:none;
-border-radius:6px;
+border-radius:10px;
+background:rgba(255,255,255,.05);
+color:white;
 }
 
-/* footer */
+/* ===== FOOTER ===== */
 
 footer{
 text-align:center;
-padding:30px;
-background:#020617;
-margin-top:50px;
+padding:40px;
+opacity:.6;
 }
 
-/* mobile */
+/* ===== SCROLL ANIMATION ===== */
+
+.fade{
+opacity:0;
+transform:translateY(40px);
+transition:.8s;
+}
+
+.fade.show{
+opacity:1;
+transform:translateY(0);
+}
+
+/* ===== MOBILE ===== */
 
 @media(max-width:768px){
-.timeline::after{ left:20px; }
-.timeline-item{ width:100%; padding-left:60px; }
-.timeline-item:nth-child(even){ left:0; }
+
+.hero h1{
+font-size:42px;
+}
+
+section{
+padding:90px 8%;
+}
+
 }
 
 </style>
+
 </head>
 
 <body>
@@ -342,7 +319,9 @@ margin-top:50px;
 <canvas id="bg"></canvas>
 
 <header>
-<h2>Shaik Mahammad Inthiyaz</h2>
+
+<h2>Inthiyaz</h2>
+
 <nav>
 <a href="#">Home</a>
 <a href="#experience">Highlights</a>
@@ -351,218 +330,277 @@ margin-top:50px;
 <a href="#dashboards">Dashboards</a>
 <a href="#contact">Contact</a>
 </nav>
+
 </header>
 
 <div class="hero">
-<h1>Shaik Mahammad Inthiyaz</h1>
-<p>BI Analyst | Tableau | SQL | Data Visualization</p>
+
+<h1>BI Analyst Portfolio</h1>
+
+<p>
+4+ Years building enterprise Tableau dashboards,
+data models and analytics platforms.
+</p>
+
 <button class="btn" onclick="downloadResume()">Download Resume</button>
+
 </div>
 
 <section id="experience">
+
 <h2 class="title">Professional Highlights</h2>
 
 <div class="kpi-container">
-<div class="kpi"><h2 class="counter" data-target="4">0</h2><p>Years Experience</p></div>
-<div class="kpi"><h2 class="counter" data-target="100">0</h2><p>Dashboards Built</p></div>
-<div class="kpi"><h2 class="counter" data-target="5">0</h2><p>Enterprise Clients</p></div>
-<div class="kpi"><h2 class="counter" data-target="6">0</h2><p>Technologies</p></div>
+
+<div class="card fade kpi">
+<h2 class="counter" data-target="4">0</h2>
+<p>Years Experience</p>
 </div>
+
+<div class="card fade kpi">
+<h2 class="counter" data-target="100">0</h2>
+<p>Dashboards Built</p>
+</div>
+
+<div class="card fade kpi">
+<h2 class="counter" data-target="5">0</h2>
+<p>Enterprise Clients</p>
+</div>
+
+<div class="card fade kpi">
+<h2 class="counter" data-target="6">0</h2>
+<p>Technologies</p>
+</div>
+
+</div>
+
 </section>
 
-<!-- TIMELINE -->
-
 <section id="timeline">
-<h2 class="title">My Tableau Experience Journey</h2>
+
+<h2 class="title">Experience</h2>
 
 <div class="timeline">
 
-<div class="timeline-item">
-<div class="timeline-content">
-<h3>Ashok Leyland – Service Analytics</h3>
-<span>Feb 2026 – Present</span>
-<p>Dealer dashboards, service KPIs, parts analytics & real-time insights.</p>
-</div>
+<div class="card fade">
+<h3>Ashok Leyland</h3>
+<p>Dealer service dashboards & service analytics.</p>
 </div>
 
-<div class="timeline-item">
-<div class="timeline-content">
-<h3>Tata Communications – BI</h3>
-<span>Aug 2025 – Jan 2026</span>
-<p>Executive dashboards, KPI tracking & strategic insights.</p>
-</div>
+<div class="card fade">
+<h3>Tata Communications</h3>
+<p>Network KPI dashboards & enterprise BI insights.</p>
 </div>
 
-<div class="timeline-item">
-<div class="timeline-content">
-<h3>Air India – Loyalty</h3>
-<span>Jan 2025 – Jul 2025</span>
-<p>CXO dashboards, revenue tracking & SQL analytics.</p>
-</div>
+<div class="card fade">
+<h3>Air India Loyalty</h3>
+<p>CXO dashboards, redemption & accrual analytics.</p>
 </div>
 
-<div class="timeline-item">
-<div class="timeline-content">
+<div class="card fade">
 <h3>TATA TEPL</h3>
-<span>May 2024 – Dec 2025</span>
-<p>Manufacturing dashboards, downtime & quality analytics.</p>
-</div>
-</div>
-
-<div class="timeline-item">
-<div class="timeline-content">
-<h3>Kisah Apparels</h3>
-<span>Jun 2023 – Feb 2024</span>
-<p>E-commerce dashboards, returns & sales insights.</p>
-</div>
+<p>Manufacturing dashboards & downtime analysis.</p>
 </div>
 
 </div>
+
 </section>
 
 <section id="projects">
+
 <h2 class="title">Enterprise Projects</h2>
 
 <div class="projects">
 
-<div class="project">
+<div class="card fade project">
 <img src="AL.png">
-<div class="project-overlay">
 <h3>Ashok Leyland</h3>
-<p>Service dashboards, revenue tracking & KPI insights.</p>
-</div>
+<p>Dealer performance dashboards & service analytics.</p>
 </div>
 
-<div class="project">
+<div class="card fade project">
 <img src="Air India.png">
-<div class="project-overlay">
 <h3>Air India</h3>
-<p>CXO dashboards, loyalty analytics & SQL modeling.</p>
-</div>
+<p>Loyalty analytics & CXO dashboards.</p>
 </div>
 
-<div class="project">
+<div class="card fade project">
 <img src="Tata Communications.png">
-<div class="project-overlay">
 <h3>Tata Communications</h3>
-<p>Executive dashboards & KPI insights.</p>
-</div>
+<p>Enterprise network KPI dashboards.</p>
 </div>
 
 </div>
+
 </section>
 
 <section id="dashboards">
+
 <h2 class="title">Dashboard Gallery</h2>
 
 <div class="slider-container">
+
 <div class="slider">
-<div class="slide"><img src="Screenshot 2026-03-12 152419.png"></div>
-<div class="slide"><img src="Screenshot 2026-03-12 152445.png"></div>
-<div class="slide"><img src="CEO Dashboard.png"></div>
+
+<div class="slide">
+<img src="Screenshot 2026-03-12 152419.png">
 </div>
 
-<button class="prev">&#10094;</button>
-<button class="next">&#10095;</button>
+<div class="slide">
+<img src="Screenshot 2026-03-12 152445.png">
+</div>
 
-<div class="dots">
-<span class="dot active"></span>
-<span class="dot"></span>
-<span class="dot"></span>
+<div class="slide">
+<img src="CEO Dashboard.png">
 </div>
+
 </div>
+
+<button class="prev">❮</button> <button class="next">❯</button>
+
+</div>
+
 </section>
 
 <section class="cta">
+
 <h2>Looking for a Tableau Developer?</h2>
-<p>I build enterprise dashboards and analytics solutions.</p>
+
+<p>
+I design enterprise dashboards and analytics platforms
+for business decision making.
+</p>
+
 <button class="btn" onclick="downloadResume()">Hire Me</button>
+
 </section>
 
 <section id="contact">
+
 <h2 class="title">Recruiter Contact</h2>
+
 <form class="contact">
+
 <input type="text" placeholder="Name">
+
 <input type="email" placeholder="Email">
+
 <textarea rows="5" placeholder="Message"></textarea>
+
 <button class="btn">Send Message</button>
+
 </form>
+
 </section>
 
 <footer>
-<p>© 2026 Shaik Mahammad Inthiyaz</p>
+
+© 2026 Shaik Mahammad Inthiyaz
+
 </footer>
 
 <script>
+
+/* Resume */
 
 function downloadResume(){
 window.open("inthiyaz_resume.pdf","_blank")
 }
 
-/* counter */
-document.querySelectorAll('.counter').forEach(c=>{
+/* Counter */
+
+document.querySelectorAll(".counter").forEach(c=>{
+
 let update=()=>{
-let t=+c.dataset.target
-let v=+c.innerText
-let inc=t/200
-if(v<t){
-c.innerText=Math.ceil(v+inc)
+
+let target=+c.dataset.target
+let value=+c.innerText
+let inc=target/200
+
+if(value<target){
+c.innerText=Math.ceil(value+inc)
 setTimeout(update,10)
-}else c.innerText=t
 }
+
+}
+
 update()
+
 })
 
-/* animation */
-window.addEventListener("scroll",()=>{
-document.querySelectorAll(".kpi").forEach(el=>{
-if(el.getBoundingClientRect().top<window.innerHeight){
-el.classList.add("active")
+/* Scroll Animation */
+
+const observer=new IntersectionObserver(entries=>{
+
+entries.forEach(e=>{
+if(e.isIntersecting){
+e.target.classList.add("show")
 }
 })
+
 })
 
-/* slider */
+document.querySelectorAll(".fade").forEach(el=>{
+observer.observe(el)
+})
+
+/* Dashboard Slider */
+
 let i=0
 const slides=document.querySelectorAll(".slide")
-const dots=document.querySelectorAll(".dot")
 const slider=document.querySelector(".slider")
 
 function show(n){
+
 i=(n+slides.length)%slides.length
 slider.style.transform=`translateX(-${i*100}%)`
-dots.forEach(d=>d.classList.remove("active"))
-dots[i].classList.add("active")
+
 }
 
 document.querySelector(".next").onclick=()=>show(i+1)
 document.querySelector(".prev").onclick=()=>show(i-1)
-dots.forEach((d,idx)=>d.onclick=()=>show(idx))
+
 setInterval(()=>show(i+1),4000)
 
-/* particles */
+/* PARTICLE BACKGROUND */
+
 const canvas=document.getElementById("bg")
 const ctx=canvas.getContext("2d")
-canvas.width=innerWidth
-canvas.height=innerHeight
 
-let p=[]
+canvas.width=window.innerWidth
+canvas.height=window.innerHeight
+
+let particles=[]
+
 for(let j=0;j<80;j++){
-p.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,vx:Math.random()-0.5,vy:Math.random()-0.5})
+particles.push({
+x:Math.random()*canvas.width,
+y:Math.random()*canvas.height,
+vx:Math.random()-.5,
+vy:Math.random()-.5
+})
 }
 
 function draw(){
+
 ctx.clearRect(0,0,canvas.width,canvas.height)
-p.forEach(a=>{
-a.x+=a.vx
-a.y+=a.vy
+
+particles.forEach(p=>{
+
+p.x+=p.vx
+p.y+=p.vy
+
 ctx.beginPath()
-ctx.arc(a.x,a.y,2,0,Math.PI*2)
+ctx.arc(p.x,p.y,2,0,Math.PI*2)
 ctx.fillStyle="#38bdf8"
 ctx.fill()
+
 })
+
 requestAnimationFrame(draw)
+
 }
+
 draw()
 
 </script>
